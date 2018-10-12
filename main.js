@@ -28,7 +28,7 @@
 // let message;
 // message = 'abc'; // any
 // let endsWithC = (<string>message).endsWith('c');
-// let alternativeWay = (message as string).endsWith('c'); => --target ES6 method
+// let alternativeWay = (message as string).endsWith('c'); // => tsc main.ts --target ES6 && node main.js
 // let log = function(message) {
 //     console.log(message);
 // }
@@ -78,14 +78,31 @@
 // point.drawPoint();
 // cleaner classes
 var Point = /** @class */ (function () {
-    function Point(x, y) {
-        this.x = x;
-        this.y = y;
+    function Point(_x, _y) {
+        this._x = _x;
+        this._y = _y;
     }
     Point.prototype.drawPoint = function () {
-        console.log("x: " + this.x + ", y: " + this.y);
+        console.log("x: " + this._x + ", y: " + this._y);
     };
+    Object.defineProperty(Point.prototype, "x", {
+        get: function () {
+            return this._x;
+        },
+        set: function (value) {
+            if (value < 0) {
+                throw new Error('Value cannot be less than 0');
+            }
+            else {
+                this._x = value;
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Point;
 }());
 var point = new Point(3, 4);
+var x = point.x; // getter
+point.x = 25; // setter
 point.drawPoint();

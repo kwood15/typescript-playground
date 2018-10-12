@@ -12,3 +12,11 @@ tsc main.ts
 ```
 tsc main.ts && node main.js
 ```
+### ES5
+```
+tsc main.ts --target ES5 && node main.js
+```
+### ES6
+```
+tsc main.ts --target ES6 && node main.js
+```

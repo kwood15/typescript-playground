@@ -41,8 +41,7 @@
 // let message;
 // message = 'abc'; // any
 // let endsWithC = (<string>message).endsWith('c');
-// let alternativeWay = (message as string).endsWith('c'); => --target ES6 method
-
+// let alternativeWay = (message as string).endsWith('c'); // => tsc main.ts --target ES6 && node main.js
 // let log = function(message) {
 //     console.log(message);
 // }
@@ -110,15 +109,29 @@
 
 // cleaner classes
 class Point {
-    constructor(private x?: number, private y?: number) {
+    constructor(private _x?: number, private _y?: number) {
     }
     
     drawPoint() {
-        console.log(`x: ${this.x}, y: ${this.y}`);
+        console.log(`x: ${this._x}, y: ${this._y}`);
+    }
+
+    get x() {
+        return this._x;
+    }
+
+    set x(value) { // => tsc main.ts --target ES5 && node main.js
+        if(value < 0 ) {
+            throw new Error('Value cannot be less than 0');
+        } else {
+            this._x = value;
+        }
     }
 }
 
 let point = new Point(3, 4);
+let x = point.x; // getter
+point.x = 25; // setter
 point.drawPoint();
 
 
