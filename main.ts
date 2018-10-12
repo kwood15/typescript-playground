@@ -1,3 +1,5 @@
+import { Point } from './point';
+
 // var message = 'Good afternoon';
 
 
@@ -108,30 +110,35 @@
 
 
 // cleaner classes
-class Point {
-    constructor(private _x?: number, private _y?: number) {
-    }
+// class Point {
+//     constructor(private _x?: number, private _y?: number) {
+//     }
     
-    drawPoint() {
-        console.log(`x: ${this._x}, y: ${this._y}`);
-    }
+//     drawPoint() {
+//         console.log(`x: ${this._x}, y: ${this._y}`);
+//     }
 
-    get x() {
-        return this._x;
-    }
+//     get x() {
+//         return this._x;
+//     }
 
-    set x(value) { // => tsc main.ts --target ES5 && node main.js
-        if(value < 0 ) {
-            throw new Error('Value cannot be less than 0');
-        } else {
-            this._x = value;
-        }
-    }
-}
+//     set x(value) { // => tsc main.ts --target ES5 && node main.js
+//         if(value < 0 ) {
+//             throw new Error('Value cannot be less than 0');
+//         } else {
+//             this._x = value;
+//         }
+//     }
+// }
 
-let point = new Point(3, 4);
-let x = point.x; // getter
-point.x = 25; // setter
+// let point = new Point(3, 4);
+// let x = point.x; // getter
+// point.x = 25; // setter
+// point.drawPoint();
+
+
+// Modules import
+let point = new Point(6, 7);
 point.drawPoint();
 
 

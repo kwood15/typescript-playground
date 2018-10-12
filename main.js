@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var point_1 = require("./point");
 // var message = 'Good afternoon';
 // function log(message) {
 //     console.log(message)
@@ -77,32 +80,27 @@
 // let point = new Point(1, 2); // => inferring type : Point
 // point.drawPoint();
 // cleaner classes
-var Point = /** @class */ (function () {
-    function Point(_x, _y) {
-        this._x = _x;
-        this._y = _y;
-    }
-    Point.prototype.drawPoint = function () {
-        console.log("x: " + this._x + ", y: " + this._y);
-    };
-    Object.defineProperty(Point.prototype, "x", {
-        get: function () {
-            return this._x;
-        },
-        set: function (value) {
-            if (value < 0) {
-                throw new Error('Value cannot be less than 0');
-            }
-            else {
-                this._x = value;
-            }
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return Point;
-}());
-var point = new Point(3, 4);
-var x = point.x; // getter
-point.x = 25; // setter
+// class Point {
+//     constructor(private _x?: number, private _y?: number) {
+//     }
+//     drawPoint() {
+//         console.log(`x: ${this._x}, y: ${this._y}`);
+//     }
+//     get x() {
+//         return this._x;
+//     }
+//     set x(value) { // => tsc main.ts --target ES5 && node main.js
+//         if(value < 0 ) {
+//             throw new Error('Value cannot be less than 0');
+//         } else {
+//             this._x = value;
+//         }
+//     }
+// }
+// let point = new Point(3, 4);
+// let x = point.x; // getter
+// point.x = 25; // setter
+// point.drawPoint();
+// Modules import
+var point = new point_1.Point(6, 7);
 point.drawPoint();
